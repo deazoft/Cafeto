@@ -10,5 +10,9 @@ module.exports = {
     getall(req, res) {
         return User.findAll().then(User => res.status(201).send(User))
             .error(error => res.status(400).send(error));
+    },
+    findbyEmail(req,res){
+        return User.findAll({where :{email:req.body.email}}).then(User=> res.status(201).send(User))
+        .error(error => res.status(400).send(error));
     }
 };
