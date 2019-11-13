@@ -4,11 +4,11 @@ const https = require('https');
 
 module.exports = {
     getLast(req, res) {
-        https.get('https://api.themoviedb.org/3/movie/popular?api_key='+ API_KEY +'&language=en-US', (resp) => {
+        https.get('https://api.themoviedb.org/3/movie/popular?api_key=' + API_KEY + '&language=en-US', (resp) => {
 
             let data = '';
             resp.on('data', (chunk) => {
-              data += chunk;
+                data += chunk;
             });
             resp.on('end', () => {
                 return res.status(200).send(JSON.parse(data));

@@ -2,12 +2,13 @@ var express = require('express');
 
 
 var app = express();
-let apiRoutes = require("./api-routes");
-let movieRoutes = require('./movie-routes');
+let apiRoutes = require("./routes/api-routes");
+let movieRoutes = require('./routes/movie-routes');
 
 app.use(express.json());
 app.use('/api', apiRoutes);
-app.use('/movie',movieRoutes);
+app.use('/movie', movieRoutes);
+
 
 
 /*models.sequelize.sync({force: true})

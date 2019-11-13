@@ -1,5 +1,5 @@
 let router = require('express').Router();
-const Movie = require('./controllers').Movie;
+const Movie = require('../controllers').Movie;
 
 router.get('/last',Movie.getLast);
 
