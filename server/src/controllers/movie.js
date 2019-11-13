@@ -1,17 +1,26 @@
-var Request = require("request");
 const API_KEY = "7f739e607055d08d2816b945741c0a4d";
-
-const tmdb = require('tmdbv3').init(API_KEY);
+const https = require('https');
 
 
 module.exports = {
-    getLast: function(){
-        console.log('Prueba');
-        tmdb.misc.latest((err ,res) => {
-            console.log(res.title);
+    getLast(req, res) {
+        https.get('https://api.themoviedb.org/3/movie/popular?api_key='+ API_KEY +'&language=en-US', (resp) => {
+
+            let data = '';
+            resp.on('data', (chunk) => {
+              data += chunk;
+            });
+            resp.on('end', () => {
+                return res.status(200).send(JSON.parse(data));
+            });
+
+        }).on("error", (err) => {
+            return res.status(400).send(err);
         });
     }
-}
+};
+
+
 
 
 
