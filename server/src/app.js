@@ -5,12 +5,14 @@ var app = express();
 let apiRoutes = require("./routes/user-routes");
 let movieRoutes = require('./routes/movie-routes');
 let reviewRoutes = require('./routes/review-routes');
+let commentRoutes = require('./routes/comments-routes');
 const models = require('./db/models');
 
 app.use(express.json());
 app.use('/api', apiRoutes);
 app.use('/movie', movieRoutes);
 app.use('/review',reviewRoutes);
+app.use('/comment',commentRoutes);
 
 
 
