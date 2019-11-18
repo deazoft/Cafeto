@@ -1,17 +1,29 @@
 # docker-compose.yml
 version: "3"
 services:
-  app:
-    build: .
+
+  reactapp:
+    build:
+      dockerfile: DockerfileApp
+      context: .
+    depends_on:
+      - server
+    ports:
+      - "3000:3000"  
+    volumes:
+    - ./react-app/src/:/react-app/src/
+
+  server:
+    build: 
+      dockerfile: Dockerfile
+      context: .
     depends_on:
       - postgres
     ports:
-      - "3000:3000"
-      - "9229:9229"
+      - "3001:3001"
     volumes:
       - ./server/src/:/server/src/
     
-
   postgres:
     image: postgres:11
     restart: always

@@ -1,0 +1,11 @@
+FROM node:latest
+RUN mkdir -p /react-app
+WORKDIR react-app
+COPY react-app/package.json /react-app
+COPY react-app/package-lock.json /react-app
+RUN npm install -quiet
+COPY react-app/src/. /react-app/src
+COPY react-app/public/. /react-app/public
+CMD [ "npm", "start"]
+
+
