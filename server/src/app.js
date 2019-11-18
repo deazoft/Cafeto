@@ -25,9 +25,9 @@ app.use('/comment',commentRoutes);
 
 
 
-/*models.sequelize.sync()
+models.sequelize.sync()
     .then(result => console.log(result))
-    .catch(err => console.log('error',err));*/
+    .catch(err => console.log('error',err));
 
 
 

@@ -1,2 +1,3 @@
 docker-compose up --build
-docker exec -it 58d8289b96d7 psql -U postgres
+
+curl -d '{	"name":"Jose David Escobar",	"email":"deazoft@gmail.com"}' -H "Content-Type: application/json" -X POST http://localhost:3001/api/user
